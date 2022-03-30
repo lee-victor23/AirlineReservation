@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="JpaBuddyIdeaProjectConfig" ddlActionDbType="postgres">
+    <option name="defaultUnitInitialized" value="true" />
+    <option name="reverseEngineeringLastDbConnectionId" value="2220c4f9-960f-4a06-af41-13437f420a45_bookings" />
+    <option name="reLastEntityCreationPackage" value="src/main/java/com/example/airline_reservation_system/model/entity" />
+    <reUseDbSnapshotConnections>
+      <dbConnection id="2220c4f9-960f-4a06-af41-13437f420a45_bookings" />
+    </reUseDbSnapshotConnections>
+    <option name="newEntityIdStrategy" />
+  </component>
+</project>

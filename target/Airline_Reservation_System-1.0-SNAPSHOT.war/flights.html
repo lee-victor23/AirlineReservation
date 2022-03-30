@@ -1,0 +1,63 @@
+<!DOCTYPE HTML>
+<!-- Website Template by freewebsitetemplates.com -->
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>News - ZiZurz Website Template</title>
+	<link rel="stylesheet" href="css/style.css" type="text/css">
+</head>
+<body>
+	<div id="header">
+		<div class="section">
+			<div class="logo">
+				<a href="index.html">zizurz</a>
+			</div>
+			<ul>
+				<li>
+					<a href="index.html">home</a>
+				</li>
+				<li>
+					<a href="about.html">about</a>
+				</li>
+				<li>
+					<a href="aircrafts.html">aircrafts</a>
+				</li>
+				<li class="selected">
+					<a href="flights.html">flight</a>
+				</li>
+				<li>
+					<a href="contact.html">contact</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+
+	<div id="body">
+		<h1>Select Number of Pages</h1>
+		<form action="Flights" >
+			<input type="hidden" name="currentPage" value="1">
+			<input type="hidden" name="keyword" value=""/>
+			<input type="hidden" name="direction" value="ASC">
+			<div class="form-group col-md-4">
+				<label for="records">Select records per page:</label> <select
+					class="form-control" id="records" name="recordsPerPage">
+				<option value="20">20</option>
+				<option value="50" selected>50</option>
+				<option value="70" >70</option>
+				<option value="100">100</option>
+			</select>
+			</div>
+			<button type="submit" class="btn btn-primary">Submit</button>
+		</form>
+	</div>
+
+	<script
+			src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	<script
+			src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+</body>
+</html>
