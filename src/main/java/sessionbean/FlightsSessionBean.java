@@ -30,9 +30,13 @@ public class FlightsSessionBean implements FlightsSessionBeanLocal{
     }
 
     @Override
-    public Aircraft getAircraft(Flight flight) throws EJBException {
-        return null;
+    public List<Flight> getFlightsFromAircraft(String aircraft_id) throws EJBException {
+        Query q = em.createNativeQuery("SELECT * FROM bookings.flights WHERE flights.aircraft_code = ?",Flight.class);
+        q.setParameter(1, aircraft_id);
+        List<Flight> result =q.getResultList();
+        return result;
     }
+
 
     @Override
     public List<Flight> readFlight(int currentPage, int recordsPerPage, String keyword, String direction) throws EJBException {

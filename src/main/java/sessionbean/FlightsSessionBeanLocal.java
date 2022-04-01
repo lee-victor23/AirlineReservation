@@ -12,7 +12,7 @@ public interface FlightsSessionBeanLocal {
 
     public Flight findFlight(int flight_id) throws EJBException;
 
-    public Aircraft getAircraft(Flight flight) throws EJBException;
+    public List<Flight> getFlightsFromAircraft(String aircraft_id) throws EJBException;
 
     public List<Flight> readFlight(int currentPage, int recordsPerPage, String keyword, String direction) throws EJBException;
 

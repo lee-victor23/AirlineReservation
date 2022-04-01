@@ -144,6 +144,7 @@
             <th>Model</th>
             <th>Update</th>
             <th>Delete</th>
+            <th>Related Flights</th>
         </tr>
         <%
 
@@ -156,6 +157,7 @@
                     out.println("<td>" + a.getModel() + "</td>");
                     out.println("<td><a href=\"AircraftController?id=" + a.getId() + "\">Update</a></td>");
                     out.println("<td><a href=\"AircraftController?id=" + a.getId() + "\">Delete</a></td>");
+                    out.println("<td><a href=\"ShowListServlet?entity=flight&id=" + a.getId()+ "\">Flight</a></td>");
                     out.println("</tr>");
                 }
             }else

@@ -18,6 +18,7 @@ import java.io.PrintWriter;
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.OffsetDateTime;
 import java.util.Date;
 
 @WebServlet(name = "FlightsControllerServlet", value = "/FlightsController")
@@ -41,27 +42,29 @@ public class FlightsControllerServlet extends HttpServlet {
         }
     }
 
+    public int countSum(int a , int b){
+        return a + b;
+    }
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        Timestamp scheduleDeparture=null;
-        Timestamp scheduleArrival=null;
-        Timestamp actualDeparture=null;
-        Timestamp actualArrival=null;
+        OffsetDateTime scheduleDeparture=null;
+        OffsetDateTime scheduleArrival=null;
+        OffsetDateTime actualDeparture=null;
+        OffsetDateTime actualArrival=null;
 
 
         int flight_id = Integer.parseInt(request.getParameter("flight_id"));
         String flight_no = request.getParameter("flight_no");
         String status = request.getParameter("status");
-        System.out.println(flight_id);
-        try {
-            scheduleDeparture = parseStringToTimestamp(request.getParameter("scheduled_departure"));
-            scheduleArrival = parseStringToTimestamp(request.getParameter("scheduled_arrival"));
-            actualDeparture = parseStringToTimestamp(request.getParameter("actual_departure"));
-            actualArrival = parseStringToTimestamp(request.getParameter("actual_arrival"));
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
+
+
+        scheduleDeparture = OffsetDateTime.parse(request.getParameter("scheduled_departure"));
+        scheduleArrival = OffsetDateTime.parse(request.getParameter("scheduled_arrival"));
+        actualDeparture = OffsetDateTime.parse(request.getParameter("actual_departure"));
+        actualArrival = OffsetDateTime.parse(request.getParameter("actual_arrival"));
+
         String airportCodeDpt = request.getParameter("departure_airport");
         String airportCodeArr = request.getParameter("arrival_airport");
         String aircraft_code = request.getParameter("aircraft_code");
@@ -89,9 +92,11 @@ public class FlightsControllerServlet extends HttpServlet {
         } else if (ValidateManageLogic.validateManager(request).equals("DELETE")) {
             Flight f = flightsBean.findFlight(flight_id);
             flightsBean.deleteFlight(f);
-        } else {
+        }else if (ValidateManageLogic.validateManager(request).equals("DELETE")) {
             Flight f = flightsBean.findFlight(flight_id);
-
+            flightsBean.deleteFlight(f);
+        } else {
+            Flight f = new Flight();
             f.setAircraftsData(aircraft);
             f.setFlightNo(flight_no);
             f.setScheduledDeparture(scheduleDeparture);
@@ -114,10 +119,18 @@ public class FlightsControllerServlet extends HttpServlet {
 
     }
 
-    public static Timestamp parseStringToTimestamp(String str) throws ParseException {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss.SSS");
-        Date parsedDate = dateFormat.parse(str);
-        Timestamp timestamp = new java.sql.Timestamp(parsedDate.getTime());
+//    public static Timestamp parseStringToTimestamp(String str) throws ParseException {
+//        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss.SSS");
+//        Date parsedDate = dateFormat.parse(str);
+//        Timestamp timestamp = new java.sql.Timestamp(parsedDate.getTime());
+//        return timestamp;
+//    }
+
+
+    public static Date parseStringToDate(String str) throws ParseException {
+
+        SimpleDateFormat DATE_TIME_FORMAT = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss.SSS");
+        Date timestamp = (Date) DATE_TIME_FORMAT.parse(str);
         return timestamp;
     }
 }

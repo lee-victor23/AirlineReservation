@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
-  <artifact type="war" name="Airline Reservation System:war">
-    <output-path>$PROJECT_DIR$/target</output-path>
+  <artifact type="war" build-on-make="true" name="Airline Reservation System:war">
+    <output-path>$PROJECT_DIR$/out</output-path>
     <properties id="maven-jee-properties">
       <options>
         <module>Airline Reservation System</module>

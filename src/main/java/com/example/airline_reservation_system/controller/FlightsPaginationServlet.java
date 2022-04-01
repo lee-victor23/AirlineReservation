@@ -5,7 +5,6 @@ import com.example.airline_reservation_system.model.entity.Flight;
 import sessionbean.FlightsSessionBeanLocal;
 
 import javax.ejb.EJB;
-import javax.ejb.EJBException;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
@@ -37,8 +36,7 @@ public class FlightsPaginationServlet extends HttpServlet {
 
         List<Flight> lists = flightsBean.readFlight(currentPage, recordsPerPage, keyword, direction);
         request.setAttribute("flight", lists);
-
-
+        
 
         request.setAttribute("nOfPages", nOfPages);
         request.setAttribute("currentPage", currentPage);

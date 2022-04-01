@@ -13,7 +13,7 @@ public interface AircraftSessionBeanLocal {
 
     public Aircraft findAircraft(String aircraft_id) throws EJBException;
 
-    public Flight getRelatedFlights(Aircraft aircraft) throws EJBException;
+    public Aircraft getAircraftByFlight(Flight flight) throws EJBException;
 
     public List<Aircraft> readAircraft(int currentPage, int recordsPerPage, String keyword, String direction) throws EJBException;
 

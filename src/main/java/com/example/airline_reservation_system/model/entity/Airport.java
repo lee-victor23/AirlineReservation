@@ -1,6 +1,9 @@
 package com.example.airline_reservation_system.model.entity;
 
 import javax.persistence.*;
+import java.awt.*;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "airports_data", schema = "bookings")
@@ -8,13 +11,11 @@ import javax.persistence.*;
         @NamedQuery(name = "Airport.findAll", query = "SELECT f FROM Airport f"),
         @NamedQuery(name = "Airport.findbyId", query = "SELECT f FROM Airport f WHERE f.id = :id"),
 })
+
 public class Airport {
     @Id
     @Column(name = "airport_code", nullable = false, length = 3)
     private String id;
-
-    @Column(name = "coordinates", nullable = false)
-    private String coordinates;
 
     @Column(name = "timezone", nullable = false)
     private String timezone;
@@ -25,28 +26,34 @@ public class Airport {
     @Column(name = "airport_name", length = 80)
     private String airportName;
 
-    public String getId() {
-        return id;
+    @OneToMany(mappedBy = "airportsData",cascade = CascadeType.REMOVE)
+    private Set<Flight> flight = new LinkedHashSet<>();
+
+    @OneToMany(mappedBy = "airportsData1",cascade = CascadeType.REMOVE)
+    private Set<Flight> flights = new LinkedHashSet<>();
+
+    public Set<Flight> getFlights() {
+        return flights;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setFlights(Set<Flight> flights) {
+        this.flights = flights;
     }
 
-    public String getCoordinates() {
-        return coordinates;
+    public Set<Flight> getFlight() {
+        return flight;
     }
 
-    public void setCoordinates(String coordinates) {
-        this.coordinates = coordinates;
+    public void setFlight(Set<Flight> flight) {
+        this.flight = flight;
     }
 
-    public String getTimezone() {
-        return timezone;
+    public String getAirportName() {
+        return airportName;
     }
 
-    public void setTimezone(String timezone) {
-        this.timezone = timezone;
+    public void setAirportName(String airportName) {
+        this.airportName = airportName;
     }
 
     public String getCity() {
@@ -57,17 +64,19 @@ public class Airport {
         this.city = city;
     }
 
-    public String getAirportName() {
-        return airportName;
+    public String getTimezone() {
+        return timezone;
     }
 
-    public void setAirportName(String airportName) {
-        this.airportName = airportName;
+    public void setTimezone(String timezone) {
+        this.timezone = timezone;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }
-
-
-    select f from Flight f left join fetch f.arrivalAirport
-        left join fetch f.departureAirport
-        left join fetch f.aircraftsData
-        order by f.id

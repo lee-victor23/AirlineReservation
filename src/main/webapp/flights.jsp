@@ -149,6 +149,7 @@
             <th>Actual arrival</th>
             <th>Update</th>
             <th>Delete</th>
+            <th>Aircraft Details</th>
         </tr>
         <%
 
@@ -168,13 +169,14 @@
                     out.println("<td>" + f.getActualArrival() + "</td>");
                     out.println("<td><a href=\"FlightsController?id=" + f.getId() + "\">Update</a></td>");
                     out.println("<td><a href=\"FlightsController?id=" + f.getId() + "\">Delete</a></td>");
+                    out.println("<td><a href=\"ShowListServlet?entity=aircraft&id=" + f.getAircraftsData().getId() + "\">Aircraft</a></td>");
                     out.println("</tr>");
                 }
             }else
             {
                 out.println("<tr>");
                 String status = "No records";
-                for (int i = 0; i < 12; i++) {
+                for (int i = 0; i < 13; i++) {
                     out.println("<td>" + status + "</td>");
                 }
                 out.println("</tr>");

@@ -6,14 +6,17 @@
     <persistence-unit name="default">
         <jta-data-source>java:/flightdb</jta-data-source>
 
-        <class>com.example.airline_reservation_system.model.entity.Aircraft</class>
         <class>com.example.airline_reservation_system.model.entity.Airport</class>
+        <class>com.example.airline_reservation_system.model.entity.Aircraft</class>
         <class>com.example.airline_reservation_system.model.entity.Flight</class>
-        <class>com.example.airline_reservation_system.model.entity.Seat</class>
+        <class>com.example.airline_reservation_system.model.entity.BoardingPassId</class>
+        <class>com.example.airline_reservation_system.model.entity.BoardingPass</class>
         <class>com.example.airline_reservation_system.model.entity.SeatId</class>
-        <class>com.example.airline_reservation_system.model.entity.SeatId</class>
         <class>com.example.airline_reservation_system.model.entity.Seat</class>
-
-
+        <class>com.example.airline_reservation_system.model.entity.Ticket</class>
+        <class>com.example.airline_reservation_system.model.entity.TicketFlightId</class>
+        <class>com.example.airline_reservation_system.model.entity.TicketFlight</class>
+        <class>com.example.airline_reservation_system.model.entity.Ticket</class>
+        <class>com.example.airline_reservation_system.model.entity.Booking</class>
     </persistence-unit>
 </persistence>

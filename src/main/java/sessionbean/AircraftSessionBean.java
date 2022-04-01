@@ -1,8 +1,8 @@
 package sessionbean;
 
+
 import com.example.airline_reservation_system.model.entity.Aircraft;
 import com.example.airline_reservation_system.model.entity.Flight;
-
 
 import javax.ejb.EJBException;
 import javax.ejb.Stateless;
@@ -31,8 +31,10 @@ public class AircraftSessionBean implements AircraftSessionBeanLocal {
     }
 
     @Override
-    public Flight getRelatedFlights(Aircraft aircraft) throws EJBException {
-        return null;
+    public Aircraft getAircraftByFlight(Flight flight) throws EJBException {
+        Query q = em.createNamedQuery("Aircraft.findbyId");
+        q.setParameter("id", flight.getAircraftsData().getId());
+        return (Aircraft) q.getSingleResult();
     }
 
 

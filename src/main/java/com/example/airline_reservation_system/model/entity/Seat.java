@@ -4,11 +4,6 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "seats", schema = "bookings")
-@NamedQueries({
-        @NamedQuery(name = "Seat.findAll", query = "SELECT s FROM Seat s"),
-        @NamedQuery(name = "Seat.findbyId", query = "SELECT s FROM Seat s WHERE s.id = :id"),
-        @NamedQuery(name = "Seat.findbyAircraftCode", query = "SELECT s FROM Seat s WHERE s.id.aircraftCode = :id")
-})
 public class Seat {
     @EmbeddedId
     private SeatId id;

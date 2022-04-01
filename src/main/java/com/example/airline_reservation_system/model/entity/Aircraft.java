@@ -6,7 +6,6 @@ import java.util.Set;
 
 @Entity
 @Table(name = "aircrafts_data", schema = "bookings")
-
 @NamedQueries({
         @NamedQuery(name = "Aircraft.findAllAsc", query = "SELECT a FROM Aircraft a order by a.id ASC"),
         @NamedQuery(name = "Aircraft.findAllDesc", query = "SELECT a FROM Aircraft a order by a.id DESC"),
@@ -25,9 +24,19 @@ public class Aircraft {
     @Column(name = "model", nullable = false, length = 45)
     private String model;
 
-    @OneToMany(mappedBy = "aircraftsData")
+    @OneToMany(mappedBy = "aircraftsData",cascade = CascadeType.REMOVE)
     private Set<Flight> flights = new LinkedHashSet<>();
 
+    @OneToMany(mappedBy = "aircraftCode",cascade = CascadeType.REMOVE)
+    private Set<Seat> seats = new LinkedHashSet<>();
+
+    public Set<Seat> getSeats() {
+        return seats;
+    }
+
+    public void setSeats(Set<Seat> seats) {
+        this.seats = seats;
+    }
 
     public Set<Flight> getFlights() {
         return flights;
